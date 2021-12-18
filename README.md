@@ -1,11 +1,14 @@
-ReadMe
+
+```
 
 MainActivity implements BridgeMessageListener
 
+
 BridgeManager.getInstance().setBridgeListener(this);
-BridgeManager.setBleFilterName("Adafruit Bluefruit LE");
-BridgeManager.setSerialFilter("Feather M0");
-BridgeManager.initialize(pluginContext, atakContext);
+        BridgeManager.setBleFilterName("Adafruit Bluefruit LE");
+        BridgeManager.setSerialFilter("Feather M0");
+        BridgeManager.initialize(pluginContext, atakContext);
+
 
     @Override
     public void onIncomingBridgeMessage(String src, String msg) {
@@ -15,5 +18,4 @@ BridgeManager.initialize(pluginContext, atakContext);
 
     @Override
     public void onBridgeStateChange(BridgeManager.BridgeConnectionStatus status) {
-
-    }
+```
