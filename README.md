@@ -29,35 +29,60 @@ dependencies {
 ```
 
 ## Usage
-Set the BridgeListener for the callbacks.
+Set the BridgeListener for the callbacks:
 ```
 BridgeManager.getInstance().setBridgeListener(this);
 ```
-Add the names of the devices to filter for
+Add the names of the devices to filter:
 ```
 BridgeManager.setBleFilterName("Adafruit Bluefruit LE");
 BridgeManager.setSerialFilter("Feather M0");
 ```
 
+Initialize the manager class for the connections:
 ```
 BridgeManager.initialize(pluginContext, atakContext);
 ```
 
+Lastly, implement BridgeMessageListener and these methods:
+```
+@Override
+public void onIncomingBridgeMessage(String src, String msg) {
+}
 
+@Override
+public void onBridgeStateChange(BridgeManager.BridgeConnectionStatus status) {
+}
 ```
 
-MainActivity implements BridgeMessageListener
+onIncomingBridgeMessage is called anytime there is a message from the device either through BLE or the serial connection.
+src will be BLE or SERIAL and msg will contain the message.
 
-
-
-
-
-    @Override
-    public void onIncomingBridgeMessage(String src, String msg) {
-        System.out.println("onIncomingBridgeMessage: " + msg);
-        incoming.setText("From " + src + ": " + msg);
+onBridgeStateChange is called anytime there is a change to the connection status of the device.
+In this example, SERIAL_ATTACHED state is still not considered a full serial connection. Your Android device should prompt you to accept the
+connection when you plug in the device. After, SERIAL_CONNECTED will be passed into onBridgeStateChange and you can begin communicating.
+```
+@Override
+public void onBridgeStateChange(BridgeManager.BridgeConnectionStatus status) {
+    switch (status) {
+        case BLE_ATTACHED:
+            System.out.println("BLE");
+            break;
+        case SERIAL_CONNECTED:
+            System.out.println("SERIAL");
+            break;
+        case BLE_DETACHED:
+        case SERIAL_ATTACHED:
+        case SERIAL_DETACHED:
+            System.out.println("NONE");
+            break;
+        default:
+            break;
     }
+}
+```
 
-    @Override
-    public void onBridgeStateChange(BridgeManager.BridgeConnectionStatus status) {
+The BridgeManager class has a static method for sending a string message. This return true if you're connected to the BLE or Serial device.
+```
+BridgeManager.sendMessage(msg);
 ```

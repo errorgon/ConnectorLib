@@ -1,6 +1,5 @@
 package com.errorgon.android.connectorlib;
 
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;

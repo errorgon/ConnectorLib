@@ -1,6 +1,5 @@
 package com.errorgon.android.connectorlib;
 
-
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
