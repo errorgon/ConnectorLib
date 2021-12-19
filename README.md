@@ -4,8 +4,7 @@
 
 Android library for automatic BLE and Serial connections with a microcontroller.
 
-This example uses an [Adafruit Feather M0 Bluefruit LE](https://www.adafruit.com/product/2995) with
-[this](Short Micro USB to USB C Cable 0.65 FT CableCreation USB C to Micro USB Braided Cord OTG 480Mbps Micro USB Cable to USB C to USB Micro for MacBook Pro Air S21 S20 S10 Pixel 5/4/3/2 etc. Space Gray) OTG
+This example uses an [Adafruit Feather M0 Bluefruit LE](https://www.adafruit.com/product/2995) with [this](https://www.amazon.com/CableCreation-Braided-480Mbps-Compatible-MacBook/dp/B0744BKDRD) OTG
 cable and a Samsung Galaxy S20
 
 The library will prefer a serial connection with the device over BLE.
