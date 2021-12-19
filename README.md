@@ -7,7 +7,7 @@ Android library for automatic BLE and Serial connections with a microcontroller.
 This example uses an [Adafruit Feather M0 Bluefruit LE](https://www.adafruit.com/product/2995) with [this](https://www.amazon.com/CableCreation-Braided-480Mbps-Compatible-MacBook/dp/B0744BKDRD) OTG
 cable and a Samsung Galaxy S20
 
-The library will prefer a serial connection with the device over BLE.
+The library will prefer a serial connection with the device over BLE. The app will stop scanning for BLE once you connected the serial device. It will resume scamming once disconnected.
 
 ## Installation
 
@@ -33,7 +33,7 @@ Set the BridgeListener for the callbacks:
 ```
 BridgeManager.getInstance().setBridgeListener(this);
 ```
-Add the names of the devices to filter:
+Add the names of the devices to filter. The names of the devices will probably be different
 ```
 BridgeManager.setBleFilterName("Adafruit Bluefruit LE");
 BridgeManager.setSerialFilter("Feather M0");
@@ -54,7 +54,6 @@ public void onIncomingBridgeMessage(String src, String msg) {
 public void onBridgeStateChange(BridgeManager.BridgeConnectionStatus status) {
 }
 ```
-
 onIncomingBridgeMessage is called anytime there is a message from the device either through BLE or the serial connection.
 src will be BLE or SERIAL and msg will contain the message.
 
@@ -82,7 +81,7 @@ public void onBridgeStateChange(BridgeManager.BridgeConnectionStatus status) {
 }
 ```
 
-The BridgeManager class has a static method for sending a string message. This return true if you're connected to the BLE or Serial device.
+The BridgeManager class has a static method for sending a string message. The method returns true if you're connected to the BLE or Serial device.
 ```
 BridgeManager.sendMessage(msg);
 ```
