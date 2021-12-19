@@ -1,3 +1,7 @@
+# PeriphConnection
+
+Android library for automatic BLE and Serial connections with a microcontroller.
+
 
 ```
 
