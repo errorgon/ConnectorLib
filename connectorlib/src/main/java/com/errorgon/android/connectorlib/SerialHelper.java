@@ -104,6 +104,7 @@ public class SerialHelper {
                     serialDevice.read(mCallback);
                     broadcastUpdate(SERIAL_DEVICE_PERMISSION);
                 } catch (Exception e) {
+                    System.out.println("Serial Permission Not granted");
                     broadcastUpdate(SERIAL_DEVICE_PERMISSION_NOT_GRANTED);
                 }
 

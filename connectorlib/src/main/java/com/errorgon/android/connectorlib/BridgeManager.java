@@ -138,6 +138,7 @@ public class BridgeManager {
         serialFilter.addAction(SerialHelper.SERIAL_DEVICE_ATTACHED);
         serialFilter.addAction(SerialHelper.SERIAL_DEVICE_DETACHED);
         serialFilter.addAction(SerialHelper.SERIAL_DEVICE_PERMISSION);
+        serialFilter.addAction(SerialHelper.SERIAL_DEVICE_PERMISSION_NOT_GRANTED);
         serialFilter.addAction(SerialHelper.SERIAL_DEVICE_MESSAGE);
 
         contextPlugin.registerReceiver(serialReceiver, serialFilter);

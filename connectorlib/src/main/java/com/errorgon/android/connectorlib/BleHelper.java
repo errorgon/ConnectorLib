@@ -271,6 +271,7 @@ public class BleHelper {
         public void onScanResult(int callbackType, ScanResult result) {
             super.onScanResult(callbackType, result);
             try {
+                System.out.println(result.getDevice().getName());
                 if (result.getDevice().getName().equals(nameFilter)) {
                     scanLeDevice(false);
                     bluetoothLeScanner.stopScan(scanCallback);
