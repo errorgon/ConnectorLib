@@ -28,11 +28,11 @@ public class SerialHelper {
 
     private static final String ACTION_USB_PERMISSION = "com.android.usb.USB_PERMISSION";
 
-    public static final String SERIAL_DEVICE_PERMISSION = "com.atakmap.android.plugintemplate.USB_PERMISSION";
-    public static final String SERIAL_DEVICE_PERMISSION_NOT_GRANTED = "com.atakmap.android.plugintemplate.USB_PERMISSION_NOT_GRANTED";
-    public static final String SERIAL_DEVICE_ATTACHED = "com.atakmap.android.plugintemplate.USB_DEVICE_ATTACHED";
-    public static final String SERIAL_DEVICE_DETACHED = "com.atakmap.android.plugintemplate.USB_DEVICE_DETACHED";
-    public static final String SERIAL_DEVICE_MESSAGE = "com.atakmap.android.plugintemplate.USB_DEVICE_MESSAGE";
+    public static final String SERIAL_DEVICE_PERMISSION = "com.errorgon.android.connectorlib.USB_PERMISSION";
+    public static final String SERIAL_DEVICE_PERMISSION_NOT_GRANTED = "com.errorgon.android.connectorlib.USB_PERMISSION_NOT_GRANTED";
+    public static final String SERIAL_DEVICE_ATTACHED = "com.errorgon.android.connectorlib.USB_DEVICE_ATTACHED";
+    public static final String SERIAL_DEVICE_DETACHED = "com.errorgon.android.connectorlib.USB_DEVICE_DETACHED";
+    public static final String SERIAL_DEVICE_MESSAGE = "com.errorgon.android.connectorlib.USB_DEVICE_MESSAGE";
 
     private static SerialHelper INSTANCE = null;
 

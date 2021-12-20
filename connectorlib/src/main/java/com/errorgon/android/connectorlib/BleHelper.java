@@ -34,13 +34,13 @@ public class BleHelper {
     private static final long SCAN_PERIOD = 5000;
     private Handler handler;
 
-    public final static String ACTION_GATT_CONNECTED = "com.atakmap.android.plugintemplate.ACTION_GATT_CONNECTED";
-    public final static String ACTION_GATT_DISCONNECTED = "com.atakmap.android.plugintemplate.ACTION_GATT_DISCONNECTED";
-    public final static String ACTION_GATT_SERVICES_DISCOVERED = "com.atakmap.android.plugintemplate.ACTION_GATT_SERVICES_DISCOVERED";
-    public final static String ACTION_DATA_AVAILABLE = "com.atakmap.android.plugintemplate.ACTION_DATA_AVAILABLE";
-    public final static String ACTION_DEVICE_NOT_FOUND = "com.atakmap.android.plugintemplate.ACTION_DEVICE_NOT_FOUND";
-    public final static String EXTRA_DATA = "com.atakmap.android.plugintemplate.EXTRA_DATA";
-    public final static String DEVICE_DOES_NOT_SUPPORT_UART = "com.atakmap.android.plugintemplate.DEVICE_DOES_NOT_SUPPORT_UART";
+    public final static String ACTION_GATT_CONNECTED = "com.errorgon.android.connectorlib.ACTION_GATT_CONNECTED";
+    public final static String ACTION_GATT_DISCONNECTED = "com.errorgon.android.connectorlib.ACTION_GATT_DISCONNECTED";
+    public final static String ACTION_GATT_SERVICES_DISCOVERED = "com.errorgon.android.connectorlib.ACTION_GATT_SERVICES_DISCOVERED";
+    public final static String ACTION_DATA_AVAILABLE = "com.errorgon.android.connectorlib.ACTION_DATA_AVAILABLE";
+    public final static String ACTION_DEVICE_NOT_FOUND = "com.errorgon.android.connectorlib.ACTION_DEVICE_NOT_FOUND";
+    public final static String EXTRA_DATA = "com.errorgon.android.connectorlib.EXTRA_DATA";
+    public final static String DEVICE_DOES_NOT_SUPPORT_UART = "com.errorgon.android.connectorlib.DEVICE_DOES_NOT_SUPPORT_UART";
 
     public static final UUID CCCD = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
     public static final UUID RX_SERVICE_UUID = UUID.fromString("6e400001-b5a3-f393-e0a9-e50e24dcca9e");
