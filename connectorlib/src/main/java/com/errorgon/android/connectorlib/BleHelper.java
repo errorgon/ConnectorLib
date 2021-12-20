@@ -50,7 +50,7 @@ public class BleHelper {
     private static String nameFilter = "";
     private static String addressFilter = "";
 
-    private Context atakContext;
+    private Context context;
 
     private static BleHelper INSTANCE = null;
 
@@ -67,13 +67,13 @@ public class BleHelper {
         return INSTANCE;
     }
 
-    public boolean initialize(Context atakContext, Context pluginContext) {
-        this.atakContext = atakContext;
+    public boolean initialize(Context context) {
+        this.context = context;
 
         handler = new Handler();
 
         if (bluetoothManager == null) {
-            bluetoothManager = (BluetoothManager) atakContext.getSystemService(Context.BLUETOOTH_SERVICE);
+            bluetoothManager = (BluetoothManager) context.getSystemService(Context.BLUETOOTH_SERVICE);
             if (bluetoothManager == null) {
                 return false;
             }
@@ -156,7 +156,7 @@ public class BleHelper {
         // We want to directly connect to the device, so we are setting the autoConnect
         // parameter to false.
         bluetoothDevice = device;
-        bluetoothGatt = device.connectGatt(atakContext, false, gattCallback);
+        bluetoothGatt = device.connectGatt(context, false, gattCallback);
         System.out.println("Trying to create a new connection.");
         bluetoothDeviceAddress = address;
         return true;
@@ -174,7 +174,7 @@ public class BleHelper {
 
     private void broadcastUpdate(final String action) {
         final Intent intent = new Intent(action);
-        LocalBroadcastManager.getInstance(atakContext).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     private void broadcastUpdate(final String action, final BluetoothGattCharacteristic characteristic) {
@@ -182,7 +182,7 @@ public class BleHelper {
         if (TX_CHAR_UUID.equals(characteristic.getUuid())) {
             intent.putExtra(EXTRA_DATA, new String(characteristic.getValue()));
         }
-        LocalBroadcastManager.getInstance(atakContext).sendBroadcast(intent);
+        LocalBroadcastManager.getInstance(context).sendBroadcast(intent);
     }
 
     public void close() {

@@ -36,7 +36,7 @@ public class SerialHelper {
 
     private static SerialHelper INSTANCE = null;
 
-    private Context atakContext;
+    private Context context;
 
     private SerialHelper() {}
 
@@ -51,15 +51,15 @@ public class SerialHelper {
         return INSTANCE;
     }
 
-    public void initialize(Context atakContext, Context pluginContext) {
-        this.atakContext = atakContext;
-        usbManager = (UsbManager) this.atakContext.getSystemService(Context.USB_SERVICE);
+    public void initialize(Context context) {
+        this.context = context;
+        usbManager = (UsbManager) this.context.getSystemService(Context.USB_SERVICE);
 
         serialFilter = new IntentFilter();
         serialFilter.addAction(ACTION_USB_PERMISSION);
         serialFilter.addAction(UsbManager.ACTION_USB_DEVICE_ATTACHED);
         serialFilter.addAction(UsbManager.ACTION_USB_DEVICE_DETACHED);
-        pluginContext.registerReceiver(usbReceiver, serialFilter);
+        context.registerReceiver(usbReceiver, serialFilter);
 
         findDevice();
     }
@@ -118,7 +118,7 @@ public class SerialHelper {
         while(deviceIterator.hasNext()){
             usbDevice = deviceIterator.next();
             if (usbDevice.getProductName().equals(deviceNameFilter)) {
-                PendingIntent pendingIntent = PendingIntent.getBroadcast(atakContext, 0, new Intent(ACTION_USB_PERMISSION), 0);
+                PendingIntent pendingIntent = PendingIntent.getBroadcast(context, 0, new Intent(ACTION_USB_PERMISSION), 0);
                 usbManager.requestPermission(usbDevice, pendingIntent);
                 break;
             }
@@ -129,13 +129,13 @@ public class SerialHelper {
 
     private void broadcastUpdate(final String action) {
         final Intent intent = new Intent(action);
-        atakContext.sendBroadcast(intent);
+        context.sendBroadcast(intent);
     }
 
     private void broadcastUpdate(final String action, final String msg) {
         final Intent intent = new Intent(action);
         intent.putExtra(action, msg);
-        atakContext.sendBroadcast(intent);
+        context.sendBroadcast(intent);
     }
 
     public void close() {

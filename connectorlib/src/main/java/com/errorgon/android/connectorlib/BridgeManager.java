@@ -13,8 +13,7 @@ public class BridgeManager {
     private static String bleFilterName = "";
     private static String bleAddressFilter = "";
 
-    private static Context contextPlugin;
-    private static Context contextAtak;
+    private static Context context;
 
     private static BridgeMessageListener onBridgeMessageListener;
 
@@ -41,9 +40,8 @@ public class BridgeManager {
         onBridgeMessageListener = mBridgeMessageListener;
     }
 
-    public static void initialize(Context pluginContext, Context atakContext) {
-        contextPlugin = pluginContext;
-        contextAtak = atakContext;
+    public static void initialize(Context context) {
+        BridgeManager.context = context;
         SerialHelper.setDeviceNameFilter(serialFilter);
         BleHelper.setNameFilter(bleFilterName);
         initSerial();
@@ -142,9 +140,9 @@ public class BridgeManager {
         serialFilter.addAction(SerialHelper.SERIAL_DEVICE_PERMISSION_NOT_GRANTED);
         serialFilter.addAction(SerialHelper.SERIAL_DEVICE_MESSAGE);
 
-        contextPlugin.registerReceiver(serialReceiver, serialFilter);
+        context.registerReceiver(serialReceiver, serialFilter);
 
-        SerialHelper.getInstance().initialize(contextAtak, contextPlugin);
+        SerialHelper.getInstance().initialize(context);
     }
 
 
@@ -157,9 +155,9 @@ public class BridgeManager {
         bleFilter.addAction(BleHelper.ACTION_DEVICE_NOT_FOUND);
         bleFilter.addAction(BleHelper.DEVICE_DOES_NOT_SUPPORT_UART);
 
-        LocalBroadcastManager.getInstance(contextAtak).registerReceiver(bleReceiver, bleFilter);
+        LocalBroadcastManager.getInstance(context).registerReceiver(bleReceiver, bleFilter);
 
-        BleHelper.getInstance().initialize(contextAtak, contextPlugin);
+        BleHelper.getInstance().initialize(context);
     }
 
 

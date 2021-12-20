@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements BridgeMessageList
         BridgeManager.getInstance().setBridgeListener(this);
         BridgeManager.setBleFilterName("Adafruit Bluefruit LE");
         BridgeManager.setSerialFilter("Feather M0");
-        BridgeManager.initialize(getApplicationContext(), getApplicationContext());
+        BridgeManager.initialize(getApplicationContext());
 
         Button button = findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
