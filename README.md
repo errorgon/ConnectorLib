@@ -31,7 +31,7 @@ dependencies {
 ## Usage
 Set the BridgeListener for the callbacks:
 ```
-BridgeManager.getInstance().setBridgeListener(this);
+BridgeManager.setBridgeListener(this);
 ```
 Add the names of the devices to filter. The names of the devices will probably be different
 ```

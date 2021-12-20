@@ -77,7 +77,7 @@ public class BridgeManager {
         @Override
         public void onReceive(Context context, Intent intent) {
             String action = intent.getAction();
-            if (SerialHelper.SERIAL_DEVICE_DETACHED.equals(action)) {
+            if (SerialHelper.SERIAL_DEVICE_DETACHED.equals(action) || SerialHelper.SERIAL_DEVICE_PERMISSION_NOT_GRANTED.equals(action)) {
                 SerialHelper.getInstance().close();
                 BleHelper.getInstance().startBle();
                 bridgeConnectionStatus = BridgeConnectionStatus.SERIAL_DETACHED;

@@ -29,6 +29,7 @@ public class SerialHelper {
     private static final String ACTION_USB_PERMISSION = "com.android.usb.USB_PERMISSION";
 
     public static final String SERIAL_DEVICE_PERMISSION = "com.atakmap.android.plugintemplate.USB_PERMISSION";
+    public static final String SERIAL_DEVICE_PERMISSION_NOT_GRANTED = "com.atakmap.android.plugintemplate.USB_PERMISSION_NOT_GRANTED";
     public static final String SERIAL_DEVICE_ATTACHED = "com.atakmap.android.plugintemplate.USB_DEVICE_ATTACHED";
     public static final String SERIAL_DEVICE_DETACHED = "com.atakmap.android.plugintemplate.USB_DEVICE_DETACHED";
     public static final String SERIAL_DEVICE_MESSAGE = "com.atakmap.android.plugintemplate.USB_DEVICE_MESSAGE";
@@ -92,15 +93,20 @@ public class SerialHelper {
                 findDevice();
                 broadcastUpdate(SERIAL_DEVICE_ATTACHED);
             } else if (ACTION_USB_PERMISSION.equals(action)) {
-                usbConnection = usbManager.openDevice(usbDevice);
-                serialDevice = UsbSerialDevice.createUsbSerialDevice(usbDevice, usbConnection);
-                serialDevice.open();
-                serialDevice.setBaudRate(115200);
-                serialDevice.setDataBits(UsbSerialInterface.DATA_BITS_8);
-                serialDevice.setParity(UsbSerialInterface.PARITY_ODD);
-                serialDevice.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
-                serialDevice.read(mCallback);
-                broadcastUpdate(SERIAL_DEVICE_PERMISSION);
+                try {
+                    usbConnection = usbManager.openDevice(usbDevice);
+                    serialDevice = UsbSerialDevice.createUsbSerialDevice(usbDevice, usbConnection);
+                    serialDevice.open();
+                    serialDevice.setBaudRate(115200);
+                    serialDevice.setDataBits(UsbSerialInterface.DATA_BITS_8);
+                    serialDevice.setParity(UsbSerialInterface.PARITY_ODD);
+                    serialDevice.setFlowControl(UsbSerialInterface.FLOW_CONTROL_OFF);
+                    serialDevice.read(mCallback);
+                    broadcastUpdate(SERIAL_DEVICE_PERMISSION);
+                } catch (Exception e) {
+                    broadcastUpdate(SERIAL_DEVICE_PERMISSION_NOT_GRANTED);
+                }
+
             }
         }
     };
