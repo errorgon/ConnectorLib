@@ -61,6 +61,7 @@ public class BridgeManager {
         } catch (Exception e) {
             try {
                 synchronized (BridgeManager.class) {
+                    // TODO: 12/20/2021 Parse into 20b chunks 
                     BleHelper.getInstance().writeRXCharacteristic(msg.getBytes());
                     System.out.println("Sent via BLE");
                 }

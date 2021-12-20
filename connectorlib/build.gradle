@@ -45,7 +45,7 @@ afterEvaluate {
 
                 groupId = 'com.github.errorgon'
                 artifactId = 'connectorlib'
-                version = '0.0.9'
+                version = '0.1.0'
             }
         }
     }
