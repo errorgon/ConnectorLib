@@ -24,7 +24,7 @@ allprojects {
 Add the library dependency to build.gradle (Module)
 ```
 dependencies {
-    implementation 'com.github.errorgon:connectorlib:0.0.6'
+    implementation 'com.github.errorgon:connectorlib:1.0.1'
 }
 ```
 
@@ -41,7 +41,7 @@ BridgeManager.setSerialFilter("Feather M0");
 
 Initialize the manager class for the connections:
 ```
-BridgeManager.initialize(pluginContext, atakContext);
+BridgeManager.initialize(this);
 ```
 
 Lastly, implement BridgeMessageListener and these methods:
